@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Sara 💜</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <div class="stars" id="stars"></div>
+
+  <!-- ─────────── SECCIÓN 1: Pantalla inicial ─────────── -->
+  <section class="screen active" id="screen-1">
+    <div class="screen-inner">
+      <p class="eyebrow">💜</p>
+      <h1 class="title-main">Hola Sara…</h1>
+      <p class="subtitle">Si estás aquí, tal vez hoy no fue un buen día.</p>
+      <button class="btn-primary" onclick="goTo('screen-2')">Tómate un momento</button>
+    </div>
+  </section>
+
+  <!-- ─────────── SECCIÓN 2: Mensaje de calma ─────────── -->
+  <section class="screen" id="screen-2">
+    <div class="screen-inner">
+      <p class="calm-text">No tienes que estar bien todo el tiempo.</p>
+      <p class="calm-text delay-1">Hay días que simplemente pesan…</p>
+      <p class="calm-text delay-2">y está bien.</p>
+      <button class="btn-ghost" onclick="goTo('screen-3')">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- ─────────── SECCIÓN 3: Recuerda ─────────── -->
+  <section class="screen" id="screen-3">
+    <div class="screen-inner wide">
+      <h2 class="section-title">Recuerda…</h2>
+      <div class="remember-grid">
+        <button class="remember-btn" onclick="showRemember('quien')">
+          <span class="remember-icon">💫</span>
+          <span>Recuerda quién eres</span>
+        </button>
+        <button class="remember-btn" onclick="showRemember('hermosa')">
+          <span class="remember-icon">📸</span>
+          <span>Recuerda lo hermosa que eres</span>
+        </button>
+        <button class="remember-btn" onclick="showRemember('vales')">
+          <span class="remember-icon">🌟</span>
+          <span>Recuerda lo que vales</span>
+        </button>
+      </div>
+
+      <!-- Card de recuerdo -->
+      <div class="remember-card" id="remember-card">
+        <div class="remember-photo-wrap">
+          <img id="remember-img" src="" alt="Sara" />
+        </div>
+        <p id="remember-msg" class="remember-message"></p>
+      </div>
+
+      <button class="btn-ghost" onclick="goTo('screen-4')">Hay algo más que quiero decirte →</button>
+    </div>
+  </section>
+
+  <!-- ─────────── SECCIÓN 4: Tu mensaje ─────────── -->
+  <section class="screen" id="screen-4">
+    <div class="screen-inner">
+      <div class="letter">
+        <p>Tal vez la vida no se dio como queríamos…</p>
+        <p>y hay muchas razones para eso.</p>
+        <br />
+        <p>Pero hay algo que no cambia…</p>
+        <p>y es que no eres alguien cualquiera para mí.</p>
+        <br />
+        <p class="italic">A veces querer a alguien no significa poder estar…</p>
+        <p class="italic">pero eso no hace que lo que siento sea menos real.</p>
+      </div>
+      <button class="btn-ghost" onclick="goTo('screen-45')">→</button>
+    </div>
+  </section>
+
+
+  <!-- ─────────── SECCIÓN 4.5: La promesa ─────────── -->
+  <section class="screen" id="screen-45">
+    <div class="screen-inner">
+      <div class="promise-wrap">
+        <p class="promise-eyebrow">💜</p>
+        <blockquote class="promise-quote">
+          <p>"Sé que hay mil razones para no estar juntos,</p>
+          <p>pero estoy harto de ellas.</p>
+          <p class="promise-break">Hay que hacer una elección,</p>
+          <p class="promise-highlight">y yo te elijo a ti.</p>
+          <p class="promise-break">Porque te voy a seguir,</p>
+          <p>te seguiré a todas partes…</p>
+          <p>te seguiré el resto de mi vida."</p>
+        </blockquote>
+        <div class="promise-divider"></div>
+        <p class="promise-note">Lo siento por romper mi promesa.</p>
+        <p class="promise-note delay-1">Es por eso que haré una nueva.</p>
+      </div>
+      <button class="btn-ghost" onclick="goTo('screen-5')">→</button>
+    </div>
+  </section>
+
+  <!-- ─────────── SECCIÓN 5: Cierre ─────────── -->
+  <section class="screen" id="screen-5">
+    <div class="screen-inner">
+      <p class="eyebrow">🌌</p>
+      <p class="closing">No tienes que responder a esto…</p>
+      <p class="closing delay-1">solo quería que tuvieras un lugar al que volver</p>
+      <p class="closing delay-2">cuando lo necesites.</p>
+      <p class="signature">— Con todo 💜</p>
+      <button class="btn-ghost small" onclick="goTo('screen-1')">Volver al inicio</button>
+    </div>
+  </section>
+
+  <!-- MÚSICA DE FONDO -->
+  <audio id="bg-music" loop>
+    <source src="music/cancion.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- BOTÓN DE MÚSICA -->
+  <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="Música">
+    <span id="music-icon">🎵</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
