@@ -99,16 +99,30 @@ function showRemember(tipo) {
 }
 
 // ─── 5. MÚSICA DE FONDO ───────────────────────
-const audio    = document.getElementById('bg-music');
+const audio     = document.getElementById('bg-music');
 const musicBtn  = document.getElementById('music-btn');
 const musicIcon = document.getElementById('music-icon');
 let musicStarted = false;
 
+function startMusic() {
+  if (musicStarted) return;
+  musicStarted = true;
+  audio.volume = 0;
+  audio.play().then(() => {
+    fadeAudio(audio, 0, 0.45, 3000);
+    musicIcon.textContent = '🔊';
+    musicBtn.classList.add('playing');
+  }).catch(() => { musicStarted = false; });
+}
+
 function toggleMusic() {
+  if (!musicStarted) {
+    startMusic();
+    return;
+  }
   if (audio.paused) {
-    audio.volume = 0;
     audio.play().then(() => {
-      fadeAudio(audio, 0, 0.45, 2000);
+      fadeAudio(audio, 0, 0.45, 1500);
       musicIcon.textContent = '🔊';
       musicBtn.classList.add('playing');
     }).catch(() => {});
@@ -135,15 +149,7 @@ function fadeAudio(audioEl, from, to, duration, callback) {
   }, stepTime);
 }
 
-// Auto-play suave al primer clic en la página
-document.addEventListener('click', () => {
-  if (!musicStarted && audio.paused) {
-    musicStarted = true;
-    audio.volume = 0;
-    audio.play().then(() => {
-      fadeAudio(audio, 0, 0.45, 3000);
-      musicIcon.textContent = '🔊';
-      musicBtn.classList.add('playing');
-    }).catch(() => {});
-  }
-}, { once: true });
+// Arrancar música al primer toque/clic en cualquier parte
+['click', 'touchstart'].forEach(evt => {
+  document.addEventListener(evt, startMusic, { once: true, passive: true });
+});
